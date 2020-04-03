@@ -1,0 +1,89 @@
+var nodemailer = require('nodemailer');
+
+var mailer = {};
+
+mailer.send = function(callback) {
+
+	var transporter = nodemailer.createTransport({
+
+		//邮件
+		/*service: 'qq',
+
+		auth: {
+
+		  user: '1478919527@qq.com',
+
+		  pass: 'msabjftbbkjfbaeg'
+
+		}
+
+		});
+
+		var mailOptions = {
+
+		  from: '1478919527@qq.com', // 发送者
+
+		  to: '180479716@qq.com', // 接受者,可以同时发送多个,以逗号隔开
+
+		  subject: 'MZJ_发邮件测试', // 标题
+
+		  //text: 'Hello world', // 文本
+
+		  html: `<h2>nodemailer基本使用:</h2><h3>
+
+		  <a href="http://blog.csdn.net/zzwwjjdj1/article/details/51878392">
+
+		  http://blog.csdn.net/zzwwjjdj1/article/details/51878392</a></h3><h2>同时风华正茂，怎敢甘拜下风。</h2>` // html代码
+
+		};
+
+		transporter.sendMail(mailOptions, function (err, info) {
+
+		  if (err) {
+
+		    callback(err,null)
+
+		    return;
+
+		  }
+
+		  callback(null,info);*/
+
+		//附件
+
+		service: 'qq',
+		auth: {
+			user: '1478919527@qq.com',
+			pass: 'msabjftbbkjfbaeg'
+		}
+	});
+	var mailOptions = {
+		from: '1478919527@qq.com', // 发送者
+		to: '180479716@qq.com,2771224010@qq.com', // 接受者,可以同时发送多个,以逗号隔开
+		subject: 'nodemailer2.5.0邮件发送', // 标题
+		//text: 'Hello world', // 文本
+		html: `<h2>万事皆备于我。反身而诚，乐莫大焉。</h2>`,
+		attachments: [{
+				filename: '发送 邮件/附件 源码(.js).js',
+				path: './mailer.js'
+			},
+			{
+				filename: 'html页面.html',
+				path: './test.html'
+			}
+		]
+	};
+
+	transporter.sendMail(mailOptions, function(err, info) {
+		if (err) {
+			console.log(err);
+			return;
+		}
+
+		console.log('发送成功');
+		
+	});
+
+}
+
+module.exports = mailer;
