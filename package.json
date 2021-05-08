@@ -40,7 +40,7 @@
     "redis": "^3.0.2",
     "redis-connection-pool": "^1.7.2",
     "svg-captcha": "^1.4.0",
-    "typeorm": "^0.2.0"
+    "typeorm": "^0.2.25"
   },
   "scripts": {
     "start": "tsc && node src/index.js"
